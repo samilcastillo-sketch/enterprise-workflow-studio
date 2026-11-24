@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowOps Studio — Enterprise Approval &amp; Workflow Builder</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>FlowOps Studio</h1>
+      <span class="badge">Enterprise BPMN-Lite DAG</span>
+    </div>
+    <div class="actions">
+      <button id="addApprovalBtn">+ Approval Node</button>
+      <button id="addConditionBtn">+ Rule Gate</button>
+      <button id="addWebhookBtn">+ ERP Sync</button>
+      <button id="connectBtn">Connect Mode: Off</button>
+      <button id="undoBtn" disabled>Undo</button>
+      <button id="redoBtn" disabled>Redo</button>
+      <button id="exportBtn" class="btn-primary">Export JSON</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="canvas-pane">
+      <div class="canvas-toolbar">
+        <span id="lintBadge" class="lint ok">DAG Valid</span>
+        <span class="hint">Drag nodes to reposition • Click Connect Mode to link nodes • Select any node to inspect SLA &amp; rules</span>
+      </div>
+      <div id="canvasWrap" class="canvas-wrap">
+        <svg id="edgeSvg" class="edge-svg"></svg>
+        <div id="nodesLayer" class="nodes-layer"></div>
+      </div>
+    </section>
+
+    <aside class="inspector">
+      <section class="panel">
+        <h2>Node Inspector</h2>
+        <div id="inspectorBody" class="inspector-body">Select a node on the canvas to edit properties.</div>
+      </section>
+
+      <section class="panel">
+        <h2>Policy Simulator</h2>
+        <label>PO Amount (USD)
+          <input id="simAmount" type="number" value="42000" />
+        </label>
+        <label>Department
+          <input id="simDept" type="text" value="Cybersecurity" />
+        </label>
+        <button id="runSimBtn" class="btn-primary" style="width:100%;margin-top:0.5rem;">Simulate Execution Path</button>
+        <div id="simTrace" class="sim-trace"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Graph Linter</h2>
+        <ul id="lintList" class="lint-list"></ul>
+      </section>
+    </aside>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
